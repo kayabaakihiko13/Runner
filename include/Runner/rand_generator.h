@@ -6,11 +6,11 @@
 #include <cstdlib>
 static unsigned int seed = 0;
 
-unsigned int SRandom() {
+static unsigned int SRandom() {
     return (unsigned int)time(NULL);
 }
 
-unsigned int randomLCG(unsigned int seed){
+static unsigned int randomLCG(unsigned int seed){
     return (1664525 * seed + 12345) % (1U << 31);
 }
 
@@ -28,6 +28,19 @@ int RandomInt(int min, int max) {
     }
     seed = randomLCG(seed);
     return min + (seed % (max - min + 1));
+}
+// TO DO THIS !!! belum kelar cokk
+void RandomInt(int* arr,const int size,int min,int max){
+    for (int i = 0; i < size; i++) {
+        arr[i] = RandomInt(min, max);
+    }
+}
+
+
+void UniformRandomArr(float* arr, int size) {
+    for (int i = 0; i < size; i++) {
+        arr[i] = Randomness(); 
+    }
 }
 
 #endif
